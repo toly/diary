@@ -32,7 +32,7 @@ if [ ! "$1" = "" ]; then
 		DATE=$(($DATE-${1:1}*24*3600))
 	fi
 	if [ $param = '+' ]; then
-		DATE=$(($DATE-${1:1}*24*3600))
+		DATE=$(($DATE+${1:1}*24*3600))
 	fi
 fi
 
