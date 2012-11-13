@@ -5,8 +5,8 @@ if [ "$1" = "help" -o "$1" = "h" -o "$1" = "?" ]; then
 	echo "Usage: diary.sh [option|date]"
 	echo "	?, h, help		view help page"
 	echo "	t, template		edit template file"
-	echo "	-[n]			n days before"
-	echo "	+[n]			n days later"
+	echo "	d-|+[n]			n days before|later, example d-2 or d+5"
+	echo "	d=[Y-m-d]		note at Y-m-d (example d=2012-10-28)"
 	exit 0
 fi
 
@@ -27,12 +27,15 @@ fi
 # запись по дате
 DATE=`date +%s`
 if [ ! "$1" = "" ]; then
-	param=${1:0:1}
-	if [ $param = '-' ]; then
-		DATE=$(($DATE-${1:1}*24*3600))
+	param=${1:0:2}
+	if [ $param = 'd-' ]; then
+		DATE=$(($DATE-${1:2}*24*3600))
 	fi
-	if [ $param = '+' ]; then
-		DATE=$(($DATE+${1:1}*24*3600))
+	if [ $param = 'd+' ]; then
+		DATE=$(($DATE+${1:2}*24*3600))
+	fi
+	if [ $param = 'd=' ]; then
+		DATE=`date +%s --date=${1:2}`
 	fi
 fi
 
