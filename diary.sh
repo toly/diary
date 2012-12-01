@@ -71,7 +71,7 @@ if [ $need_week ]; then
 		echo -e "\n" >> $entry
 	fi
 else
-	mkdir -p $main_dir/$year/$mount
+	mkdir -p $main_dir/$year/$mounth
 	entry=$main_dir/$year/$mounth/$day.txt
 	if [ ! -e $entry ]; then
 		date +%F --date="@$DATE" >> $entry
