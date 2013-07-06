@@ -6,4 +6,4 @@ Bash script for keeping dairy
 Install
 -------
 
-$ sudo cp diary.sh /bin/
+    $ sudo cp diary.sh /bin/
